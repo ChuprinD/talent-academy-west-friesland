@@ -1,0 +1,1 @@
+INSERT INTO YoungProfessionals (`Jaar`, `Niveau regio`, `Regio`, `Ingeschreven UWV werkbedrijf`, `Arbeidspositie`, `Onderwijsdeelname`, `Uitkering`, `Aantal jongeren`, `Totaal aantal jongeren`, `Aandeel`) VALUES ('2018', 'Gemeente', '''s-Gravenhage', 'Totaal', 'Niet-werkzame bevolking', 'Totaal', 'Met uitkering sociale zekerheid', '3900.00', '82200.00', '4.74');
