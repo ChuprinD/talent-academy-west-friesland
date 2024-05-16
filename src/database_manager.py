@@ -47,7 +47,6 @@ def dump_database():
     # Form the full path to the dump file
     command = ['mysqldump', '-u', 'root','-p0525','NHN', '>', 'C:/Users/chupr/Desktop/projects/talent-academy-west-friesland/Databases/sql/dump.sql']
 
-    # Запускаем команду в командной строке
     try:
         subprocess.run(command, shell=True, check=True)
         print("Command executed successfully.")
