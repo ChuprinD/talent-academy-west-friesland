@@ -1,7 +1,7 @@
 import pandas as pd
 
-def clean_young_professionals(path_to_raw_data, path_to_clean_data, name_young_professionals_data_file, municipalities):
-    df = pd.read_csv(path_to_raw_data + '/' + name_young_professionals_data_file, sep=';')
+def clean_young_professionals(path_to_raw_data, path_to_clean_data, name_data_file, municipalities):
+    df = pd.read_csv(path_to_raw_data + '/' + name_data_file, sep=';')
     
     #Condition for Jaar
     last_year = df['Jaar'].max()
@@ -51,4 +51,4 @@ def clean_young_professionals(path_to_raw_data, path_to_clean_data, name_young_p
     df = pd.concat([df, total_df])
     
     #Save file
-    df.to_csv(path_to_clean_data + '/' + name_young_professionals_data_file, index=False)
+    df.to_csv(path_to_clean_data + '/' + name_data_file, index=False)
