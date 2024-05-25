@@ -4,7 +4,7 @@ import os
 import subprocess
 
 from src.config import DB_config, Path_to_sql_database
-
+    
 
 def update_table(csv_path, table_plan):
     try:
@@ -40,16 +40,14 @@ def update_table(csv_path, table_plan):
     finally:
         cursor.close()
         connection.close()
-        
-#TODO fix this function       
-'''        
+
+
 def dump_database():
     # Form the full path to the dump file
-    command = ['mysqldump', '-u', 'root','-p0525','NHN', '>', 'C:/Users/chupr/Desktop/projects/talent-academy-west-friesland/Databases/sql/dump.sql']
+    command = ['mysqldump' , '-u', DB_config['user'], '-p'+DB_config['password'], DB_config['database'], '>', Path_to_sql_database]
 
     try:
         subprocess.run(command, shell=True, check=True)
         print("Command executed successfully.")
     except subprocess.CalledProcessError as e:
         print(f"Error executing command: {e}")
-'''
