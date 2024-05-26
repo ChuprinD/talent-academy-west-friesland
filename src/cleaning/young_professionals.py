@@ -143,5 +143,4 @@ def clean_young_professionals_living_working_region_2021_2022(name_data_file_202
                                  'Werkregio\'s': 'Werkregio',
                                  'Banen_van_werknemers': 'Banen'}, inplace=True)
     
-    #Save file
     return df_2021_2022
