@@ -13,7 +13,7 @@ def clean_young_professionals(name_data_file):
     df = df.drop('Niveau regio', axis=1) 
     
     #Condition for Regio
-    condition = df['Regio'].isin(Municipalities)
+    condition = df['Regio'].isin(Municipalities + COROP)
     df = df[condition] 
     
     #Condition for Ingeschreven UWV werkbedrijf
@@ -40,7 +40,7 @@ def clean_young_professionals(name_data_file):
     df = df.drop('Aandeel', axis=1)
     
     #Get total number of working in NHN
-    sum_by_year = df.groupby('Jaar').agg({'Aantal jongeren': 'sum', 'Totaal aantal jongeren': 'sum'}).reset_index()
+    ''' sum_by_year = df.groupby('Jaar').agg({'Aantal jongeren': 'sum', 'Totaal aantal jongeren': 'sum'}).reset_index()
     
     total_rows = []
     
@@ -49,7 +49,7 @@ def clean_young_professionals(name_data_file):
                             'Totaal aantal jongeren': row['Totaal aantal jongeren']})
     
     total_df = pd.DataFrame(total_rows)
-    df = pd.concat([df, total_df])
+    df = pd.concat([df, total_df])'''
     
     #Save file
     df.to_csv(Path_to_clean_data + '/' + name_data_file, index=False)

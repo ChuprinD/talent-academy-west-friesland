@@ -31,7 +31,7 @@ Path_to_sql_database = 'Databases/sql/dump.sql'
 Name_young_professionals_data_file = 'Arbeidsmarktsituatie jongeren (15 tot 27 jaar) (85820NED_01).csv'
 Name_young_professionals_living_working_region_2018_2020_data_file = 'Banen van werknemers; naar geslacht, leeftijd, woon- en werkregio\'s (83658NED).csv'
 Name_young_professionals_living_working_region_2021_2022_data_file = 'Woon_werkafstand_werknemers__leeftijd_26052024_185436.csv'
-Name_young_professionals_living_working_region_2018_2022_data_file = 'Banen van werknemers; woon- en werkregio'
+Name_young_professionals_living_working_region_2018_2022_data_file = 'Banen van werknemers; woon- en werkregio.csv'
 Table_plan_young_professionals = {'name': 'jongeren',
                                   'columns': {'id': 'INT PRIMARY KEY AUTO_INCREMENT',
                                               'Jaar': 'INT NOT NULL',
