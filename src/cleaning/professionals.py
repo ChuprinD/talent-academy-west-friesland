@@ -1,72 +1,18 @@
 import pandas as pd
 from ..config import (Municipalities, Path_to_raw_data, Path_to_clean_data, NHN_COROP, Last_year)
 
-def clean_young_professionals(name_data_file):
-    df = pd.read_csv(Path_to_raw_data + '/' + name_data_file, sep=';')
-    
-    #Condition for Jaar
-    last_year = Last_year
-    condition = df['Jaar'] > (last_year - 5)
-    df = df[condition] 
-    
-    #Drop Niveau regio
-    #df = df.drop('Niveau regio', axis=1) 
-    
-    #Condition for Regio
-    condition = df['Regio'].isin(Municipalities + NHN_COROP)
-    df = df[condition] 
-    
-    #Condition for Ingeschreven UWV werkbedrijf
-    condition = df['Ingeschreven UWV werkbedrijf'] == 'Niet geregistreerd werkzoekende bij UWV'
-    df = df[condition]
-    df = df.drop('Ingeschreven UWV werkbedrijf', axis=1) 
-    
-    #Condition for Arbeidspositie
-    condition = df['Arbeidspositie'] == 'Werkzame beroepsbevolking'
-    df = df[condition] 
-    df = df.drop('Arbeidspositie', axis=1) 
-    
-    #Condition for Onderwijsdeelname
-    condition = df['Onderwijsdeelname'] == 'Volgt geen formeel onderwijs'
-    df = df[condition] 
-    df = df.drop('Onderwijsdeelname', axis=1) 
-    
-    #Drop Uitkering
-    condition = df['Uitkering'] == 'Totaal met of zonder uitkering'
-    df = df[condition] 
-    df = df.drop('Uitkering', axis=1) 
-    
-    #Drop Aandeel
-    df = df.drop('Aandeel', axis=1)
-    
-    #Get total number of working in NHN
-    ''' sum_by_year = df.groupby('Jaar').agg({'Aantal jongeren': 'sum', 'Totaal aantal jongeren': 'sum'}).reset_index()
-    
-    total_rows = []
-    
-    for index, row in sum_by_year.iterrows():
-        total_rows.append({'Jaar': row['Jaar'], 'Regio': 'NHN', 'Aantal jongeren': row['Aantal jongeren'],
-                            'Totaal aantal jongeren': row['Totaal aantal jongeren']})
-    
-    total_df = pd.DataFrame(total_rows)
-    df = pd.concat([df, total_df])'''
-    
-    #Save file
-    df.to_csv(Path_to_clean_data + '/' + name_data_file, index=False)
 
-
-def clean_young_professionals_living_working_region(name_data_file_2018_2020, name_data_file_2021_2022, name_data_file_2018_2022):
-
-    df_2018_2020 = clean_young_professionals_living_working_region_2018_2020(name_data_file_2018_2020)
-    df_2021_2022 = clean_young_professionals_living_working_region_2021_2022(name_data_file_2021_2022)
+def clean_professionals_living_working_region(name_data_file_2018_2020, name_data_file_2021_2022, name_data_file_2018_2022):
+    df_2018_2020 = clean_professionals_living_working_region_2018_2020(name_data_file_2018_2020)
+    df_2021_2022 = clean_professionals_living_working_region_2021_2022(name_data_file_2021_2022)
 
     #Union of two files
     df_2018_2022 = pd.concat([df_2018_2020, df_2021_2022], ignore_index=True)
     df_2018_2022.to_csv(Path_to_clean_data + '/' + name_data_file_2018_2022, index=False)
+    
 
-
-def clean_young_professionals_living_working_region_2018_2020(name_data_file_2018_2020):
-     #clean df_2018_2020
+def clean_professionals_living_working_region_2018_2020(name_data_file_2018_2020):
+    #clean df_2018_2020
     df_2018_2020 = pd.read_csv(Path_to_raw_data + '/' + name_data_file_2018_2020, sep=';')
 
     #Condition for Jaar
@@ -87,7 +33,7 @@ def clean_young_professionals_living_working_region_2018_2020(name_data_file_201
     df_2018_2020 = df_2018_2020[condition]
 
     #Condition for Leeftijd
-    condition = df_2018_2020['Leeftijd'].isin(['15 tot 20 jaar', '20 tot 25 jaar', '25 tot 30 jaar'])
+    condition = df_2018_2020['Leeftijd'].isin(['30 tot 35 jaar', '35 tot 40 jaar', '40 tot 45 jaar', '45 tot 50 jaar', '50 tot 55 jaar', '55 tot 60 jaar', '60 tot 65 jaar', '65 jaar of ouder'])
     df_2018_2020 = df_2018_2020[condition]
 
     #Drop Woon-werkafstand
@@ -95,13 +41,13 @@ def clean_young_professionals_living_working_region_2018_2020(name_data_file_201
 
     #Union by age
     df_2018_2020 = df_2018_2020.groupby(['Jaar', 'Niveau regio', 'Woonregio', 'Werkregio']).agg({'Banen': 'sum'}).reset_index()
-    df_2018_2020['Leeftijd'] = '15 tot 30 jaar'
+    df_2018_2020['Leeftijd'] = '30+ jaar'
     df_2018_2020 = df_2018_2020.drop('Leeftijd', axis=1)
     
     return df_2018_2020
 
 
-def clean_young_professionals_living_working_region_2021_2022(name_data_file_2021_2022):
+def clean_professionals_living_working_region_2021_2022(name_data_file_2021_2022):
     #clean df_2021_2022
     df_2021_2022 = pd.read_csv(Path_to_raw_data + '/' + name_data_file_2021_2022, sep=';')
 
@@ -111,9 +57,8 @@ def clean_young_professionals_living_working_region_2021_2022(name_data_file_202
     df_2021_2022 = df_2021_2022.drop('Geslacht', axis=1)
 
     #Drop Leeftijd
-    condition = df_2021_2022['Leeftijd'] == '15 tot 30 jaar'
+    condition = df_2021_2022['Leeftijd'].isin(['30 tot 45 jaar', '45 tot 60 jaar', '60 tot 75 jaar', '75 jaar of ouder'])
     df_2021_2022 = df_2021_2022[condition]
-    df_2021_2022 = df_2021_2022.drop('Leeftijd', axis=1)
 
     #Condition for Woonregio's
     df_2021_2022['Woonregio\'s'] = df_2021_2022['Woonregio\'s'].str.replace('(CR)', '(C)')
@@ -140,6 +85,11 @@ def clean_young_professionals_living_working_region_2021_2022(name_data_file_202
 
     #Drop Woon-werkafstand (km)
     df_2021_2022 = df_2021_2022.drop('Woon-werkafstand (km)', axis=1)
+
+    #Union by age
+    df_2021_2022 = df_2021_2022.groupby(['Perioden', 'Niveau regio', 'Woonregio\'s', 'Werkregio\'s']).agg({'Banen_van_werknemers': 'sum'}).reset_index()
+    df_2021_2022['Leeftijd'] = '30+ jaar'
+    df_2021_2022 = df_2021_2022.drop('Leeftijd', axis=1)
 
     #Change columns position
     df_2021_2022 = df_2021_2022[['Perioden', 'Niveau regio', 'Woonregio\'s', 'Werkregio\'s', 'Banen_van_werknemers']]

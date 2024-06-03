@@ -1,91 +1,91 @@
-Jaar,Regio,Aantal jongeren,Totaal aantal jongeren
-2018,Alkmaar en omgeving (C),10100.0,33100.0
-2018,Kop van Noord-Holland (C),17000.0,51700.0
-2018,Alkmaar,4900.0,14700.0
-2018,Bergen (NH.),900.0,3600.0
-2018,Castricum,1400.0,4900.0
-2018,Den Helder,2500.0,7300.0
-2018,Drechterland,900.0,2700.0
-2018,Enkhuizen,800.0,2400.0
-2018,Heiloo,700.0,2900.0
-2018,Hollands Kroon,2200.0,6600.0
-2018,Hoorn,3200.0,10200.0
-2018,Koggenland,1100.0,3300.0
-2018,Medemblik,2000.0,6200.0
-2018,Opmeer,600.0,1800.0
-2018,Schagen,2000.0,6300.0
-2018,Stede Broec,1000.0,3000.0
-2018,Texel,700.0,1700.0
-2018,Uitgeest,600.0,2000.0
-2019,Alkmaar en omgeving (C),10400.0,33500.0
-2019,Kop van Noord-Holland (C),17800.0,52200.0
-2019,Alkmaar,5000.0,14700.0
-2019,Bergen (NH.),900.0,3600.0
-2019,Castricum,1400.0,4900.0
-2019,Den Helder,2600.0,7400.0
-2019,Drechterland,900.0,2800.0
-2019,Enkhuizen,800.0,2400.0
-2019,Heiloo,700.0,3000.0
-2019,Hollands Kroon,2500.0,6900.0
-2019,Hoorn,3300.0,10200.0
-2019,Koggenland,1100.0,3400.0
-2019,Medemblik,2100.0,6300.0
-2019,Opmeer,600.0,1700.0
-2019,Schagen,2100.0,6300.0
-2019,Stede Broec,1100.0,3100.0
-2019,Texel,700.0,1700.0
-2019,Uitgeest,700.0,2000.0
-2020,Alkmaar en omgeving (C),10200.0,33600.0
-2020,Kop van Noord-Holland (C),17500.0,52400.0
-2020,Alkmaar,4800.0,14800.0
-2020,Bergen (NH.),900.0,3500.0
-2020,Castricum,1300.0,4800.0
-2020,Den Helder,2500.0,7200.0
-2020,Drechterland,900.0,2800.0
-2020,Enkhuizen,800.0,2400.0
-2020,Heiloo,700.0,3100.0
-2020,Hollands Kroon,2600.0,7000.0
-2020,Hoorn,3100.0,10300.0
-2020,Koggenland,1200.0,3400.0
-2020,Medemblik,2000.0,6200.0
-2020,Opmeer,700.0,1800.0
-2020,Schagen,2100.0,6400.0
-2020,Stede Broec,1000.0,3100.0
-2020,Texel,600.0,1700.0
-2020,Uitgeest,600.0,2000.0
-2021,Alkmaar en omgeving (C),10600.0,33500.0
-2021,Kop van Noord-Holland (C),18300.0,52300.0
-2021,Alkmaar,5000.0,14600.0
-2021,Bergen (NH.),1000.0,3500.0
-2021,Castricum,1400.0,4700.0
-2021,Den Helder,2600.0,7300.0
-2021,Drechterland,900.0,2700.0
-2021,Enkhuizen,800.0,2400.0
-2021,Heiloo,700.0,3100.0
-2021,Hollands Kroon,2700.0,6900.0
-2021,Hoorn,3400.0,10400.0
-2021,Koggenland,1200.0,3300.0
-2021,Medemblik,2200.0,6300.0
-2021,Opmeer,700.0,1800.0
-2021,Schagen,2200.0,6500.0
-2021,Stede Broec,1000.0,3100.0
-2021,Texel,700.0,1700.0
-2021,Uitgeest,600.0,2000.0
-2022,Alkmaar en omgeving (C),11300.0,33900.0
-2022,Kop van Noord-Holland (C),19600.0,52900.0
-2022,Alkmaar,5300.0,14800.0
-2022,Bergen (NH.),1100.0,3600.0
-2022,Castricum,1500.0,4700.0
-2022,Den Helder,2700.0,7200.0
-2022,Drechterland,1000.0,2800.0
-2022,Enkhuizen,900.0,2400.0
-2022,Heiloo,800.0,3100.0
-2022,Hollands Kroon,2800.0,7000.0
-2022,Hoorn,3700.0,10500.0
-2022,Koggenland,1200.0,3400.0
-2022,Medemblik,2400.0,6500.0
-2022,Opmeer,700.0,1800.0
-2022,Schagen,2400.0,6600.0
-2022,Stede Broec,1100.0,3100.0
-2022,Texel,700.0,1700.0
-2022,Uitgeest,600.0,2000.0
+Jaar,Niveau regio,Regio,Aantal jongeren,Totaal aantal jongeren
+2018,Corop,Alkmaar en omgeving (C),10100.0,33100.0
+2018,Corop,Kop van Noord-Holland (C),17000.0,51700.0
+2018,Gemeente,Alkmaar,4900.0,14700.0
+2018,Gemeente,Bergen (NH.),900.0,3600.0
+2018,Gemeente,Castricum,1400.0,4900.0
+2018,Gemeente,Den Helder,2500.0,7300.0
+2018,Gemeente,Drechterland,900.0,2700.0
+2018,Gemeente,Enkhuizen,800.0,2400.0
+2018,Gemeente,Heiloo,700.0,2900.0
+2018,Gemeente,Hollands Kroon,2200.0,6600.0
+2018,Gemeente,Hoorn,3200.0,10200.0
+2018,Gemeente,Koggenland,1100.0,3300.0
+2018,Gemeente,Medemblik,2000.0,6200.0
+2018,Gemeente,Opmeer,600.0,1800.0
+2018,Gemeente,Schagen,2000.0,6300.0
+2018,Gemeente,Stede Broec,1000.0,3000.0
+2018,Gemeente,Texel,700.0,1700.0
+2018,Gemeente,Uitgeest,600.0,2000.0
+2019,Corop,Alkmaar en omgeving (C),10400.0,33500.0
+2019,Corop,Kop van Noord-Holland (C),17800.0,52200.0
+2019,Gemeente,Alkmaar,5000.0,14700.0
+2019,Gemeente,Bergen (NH.),900.0,3600.0
+2019,Gemeente,Castricum,1400.0,4900.0
+2019,Gemeente,Den Helder,2600.0,7400.0
+2019,Gemeente,Drechterland,900.0,2800.0
+2019,Gemeente,Enkhuizen,800.0,2400.0
+2019,Gemeente,Heiloo,700.0,3000.0
+2019,Gemeente,Hollands Kroon,2500.0,6900.0
+2019,Gemeente,Hoorn,3300.0,10200.0
+2019,Gemeente,Koggenland,1100.0,3400.0
+2019,Gemeente,Medemblik,2100.0,6300.0
+2019,Gemeente,Opmeer,600.0,1700.0
+2019,Gemeente,Schagen,2100.0,6300.0
+2019,Gemeente,Stede Broec,1100.0,3100.0
+2019,Gemeente,Texel,700.0,1700.0
+2019,Gemeente,Uitgeest,700.0,2000.0
+2020,Corop,Alkmaar en omgeving (C),10200.0,33600.0
+2020,Corop,Kop van Noord-Holland (C),17500.0,52400.0
+2020,Gemeente,Alkmaar,4800.0,14800.0
+2020,Gemeente,Bergen (NH.),900.0,3500.0
+2020,Gemeente,Castricum,1300.0,4800.0
+2020,Gemeente,Den Helder,2500.0,7200.0
+2020,Gemeente,Drechterland,900.0,2800.0
+2020,Gemeente,Enkhuizen,800.0,2400.0
+2020,Gemeente,Heiloo,700.0,3100.0
+2020,Gemeente,Hollands Kroon,2600.0,7000.0
+2020,Gemeente,Hoorn,3100.0,10300.0
+2020,Gemeente,Koggenland,1200.0,3400.0
+2020,Gemeente,Medemblik,2000.0,6200.0
+2020,Gemeente,Opmeer,700.0,1800.0
+2020,Gemeente,Schagen,2100.0,6400.0
+2020,Gemeente,Stede Broec,1000.0,3100.0
+2020,Gemeente,Texel,600.0,1700.0
+2020,Gemeente,Uitgeest,600.0,2000.0
+2021,Corop,Alkmaar en omgeving (C),10600.0,33500.0
+2021,Corop,Kop van Noord-Holland (C),18300.0,52300.0
+2021,Gemeente,Alkmaar,5000.0,14600.0
+2021,Gemeente,Bergen (NH.),1000.0,3500.0
+2021,Gemeente,Castricum,1400.0,4700.0
+2021,Gemeente,Den Helder,2600.0,7300.0
+2021,Gemeente,Drechterland,900.0,2700.0
+2021,Gemeente,Enkhuizen,800.0,2400.0
+2021,Gemeente,Heiloo,700.0,3100.0
+2021,Gemeente,Hollands Kroon,2700.0,6900.0
+2021,Gemeente,Hoorn,3400.0,10400.0
+2021,Gemeente,Koggenland,1200.0,3300.0
+2021,Gemeente,Medemblik,2200.0,6300.0
+2021,Gemeente,Opmeer,700.0,1800.0
+2021,Gemeente,Schagen,2200.0,6500.0
+2021,Gemeente,Stede Broec,1000.0,3100.0
+2021,Gemeente,Texel,700.0,1700.0
+2021,Gemeente,Uitgeest,600.0,2000.0
+2022,Corop,Alkmaar en omgeving (C),11300.0,33900.0
+2022,Corop,Kop van Noord-Holland (C),19600.0,52900.0
+2022,Gemeente,Alkmaar,5300.0,14800.0
+2022,Gemeente,Bergen (NH.),1100.0,3600.0
+2022,Gemeente,Castricum,1500.0,4700.0
+2022,Gemeente,Den Helder,2700.0,7200.0
+2022,Gemeente,Drechterland,1000.0,2800.0
+2022,Gemeente,Enkhuizen,900.0,2400.0
+2022,Gemeente,Heiloo,800.0,3100.0
+2022,Gemeente,Hollands Kroon,2800.0,7000.0
+2022,Gemeente,Hoorn,3700.0,10500.0
+2022,Gemeente,Koggenland,1200.0,3400.0
+2022,Gemeente,Medemblik,2400.0,6500.0
+2022,Gemeente,Opmeer,700.0,1800.0
+2022,Gemeente,Schagen,2400.0,6600.0
+2022,Gemeente,Stede Broec,1100.0,3100.0
+2022,Gemeente,Texel,700.0,1700.0
+2022,Gemeente,Uitgeest,600.0,2000.0
