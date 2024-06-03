@@ -145,3 +145,5 @@ dmypy.json
 cython_debug/
 
 useful_files/
+
+.png
