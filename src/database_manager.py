@@ -16,9 +16,23 @@ def get_region_id(region_name, region_type, cursor):
     cursor.execute(query, (region_name,))
     result = cursor.fetchone()
     return result[0] if result else None
+
+
+def get_education_type_id(education_type, cursor):
+    query = "SELECT id FROM soort_hoger_onderwijs WHERE type = %s"
+    cursor.execute(query, (education_type,))
+    result = cursor.fetchone()
+    return result[0] if result else None
+     
+
+def get_training_sector_id(training_sector, cursor):
+    query = "SELECT id FROM opleidingssectoren WHERE name = %s"
+    cursor.execute(query, (training_sector,))
+    result = cursor.fetchone()
+    return result[0] if result else None
     
 
-def update_table(csv_path, table_plan, region_columns):
+def update_table(csv_path, table_plan, region_columns=[], education_type_columns=[], training_sector_columns=[]):
     try:
         connection = mysql.connector.connect(host=DB_config['host'],
                                              database=DB_config['database'],
@@ -52,6 +66,12 @@ def update_table(csv_path, table_plan, region_columns):
                         region_type = row[header.index(region_type_col)]
                         region_id = get_region_id(value, region_type, cursor) if value else None
                         row_data.append(region_id)
+                    elif col_name in education_type_columns:
+                        education_id = get_education_type_id(value, cursor) if value else None
+                        row_data.append(education_id)
+                    elif col_name in training_sector_columns:
+                        raining_sector_id = get_training_sector_id(value, cursor) if value else None
+                        row_data.append(raining_sector_id)
                     else:
                         row_data.append(value)
                 cursor.execute(insert_sql, tuple(row_data))

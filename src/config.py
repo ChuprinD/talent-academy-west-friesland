@@ -77,6 +77,7 @@ Name_professionals_living_working_region_2018_2020_data_file = 'Banen van werkne
 Name_professionals_living_working_region_2021_2022_data_file = 'Woon_werkafstand_werknemers__leeftijd_26052024_185436.csv'
 Name_young_professionals_living_working_region_2018_2022_data_file = 'Jongeren van werknemers; woon- en werkregio.csv'
 Name_adult_professionals_living_working_region_2018_2022_data_file = 'Volwassene van werknemers; woon- en werkregio.csv'
+Name_students_living_region = 'HBO_WO studenten; naar CROHO onderdeel (BBOROM_00003_01).csv'
 
 Table_plan_young_professionals = {'name': 'jongeren',
                                   'columns': {'id': 'INT PRIMARY KEY AUTO_INCREMENT',
@@ -107,3 +108,14 @@ Table_plan_adult_professionals_work_live_region = {'name': 'volwassene_woon_en_w
                                                                'Werkende_volwassene': 'INT NOT NULL'
                                                                }
                                                    }
+
+Table_plan_students_region = {'name': 'studenten_woonregio',
+                              'columns': {'id': 'int auto_increment primary key',
+                                          'Schooljaar': 'varchar(255)',
+                                          'Niveau_regio': 'ENUM(\'Gemeente\', \'Corop\') NOT NULL',
+                                          'Regio_id': 'int',
+                                          'Soort_hoger_onderwijs_id': 'int',
+                                          'Opleidingssector_id': 'int',
+                                          'Aantal': 'int'
+                                          }
+                              }                                       
