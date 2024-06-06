@@ -147,3 +147,5 @@ cython_debug/
 useful_files/
 
 *.png
+
+csv/
