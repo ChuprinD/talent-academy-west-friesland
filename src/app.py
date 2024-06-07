@@ -19,15 +19,14 @@ class App:
     def __init__(self): 
         pass
         
-    
     def run(self):
         self.clean_all_data()
+
         self.create_forecasts()
 
         self.update_sql_database()
-        dump_database()
 
-        
+        dump_database()   
     
     def clean_all_data(self):
 
@@ -71,6 +70,7 @@ class App:
         forecast_all_professionals(source_name_young_data_file=Name_young_professionals_living_working_region_2018_2022_data_file,
                                    source_name_adult_data_file=Name_adult_professionals_living_working_region_2018_2022_data_file,
                                    result_name_data_file=Name_forecast_young_and_adult_professionals)
+        
         forecast_students(source_name_data_file=Name_students_living_region_data_file,
                           result_name_data_file=Name_forecast_students)
 

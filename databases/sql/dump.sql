@@ -77,7 +77,10 @@ CREATE TABLE `jongeren` (
   `Regio_id` int DEFAULT NULL,
   `werkende_jongeren` int NOT NULL,
   `totaal_jongeren` int NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_regio_gemeente` (`Regio_id`),
+  CONSTRAINT `fk_regio_corop` FOREIGN KEY (`Regio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_regio_gemeente` FOREIGN KEY (`Regio_id`) REFERENCES `gemeente` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -105,7 +108,12 @@ CREATE TABLE `jongeren_woon_en_werkregio` (
   `Woonregio_id` int DEFAULT NULL,
   `Werkregio_id` int DEFAULT NULL,
   `Werkende_jongeren` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_woonregio_corop` (`Woonregio_id`),
+  KEY `fk_werkregio_corop` (`Werkregio_id`),
+  CONSTRAINT `fk_werkregio_corop` FOREIGN KEY (`Werkregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_corop` FOREIGN KEY (`Woonregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_gemeente` FOREIGN KEY (`Woonregio_id`) REFERENCES `gemeente` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=401 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -139,7 +147,7 @@ CREATE TABLE `opleidingssectoren` (
 
 LOCK TABLES `opleidingssectoren` WRITE;
 /*!40000 ALTER TABLE `opleidingssectoren` DISABLE KEYS */;
-INSERT INTO `opleidingssectoren` VALUES (1,'Techniek'),(2,'Economie'),(3,'Natuur'),(4,'Onderwijs'),(5,'Totaal energietransitie'),(6,'Sectoroverstijgend'),(7,'Landbouw en natuurlijke omgeving'),(8,'Gedrag en maatschappij'),(9,'Gezondheidszorg'),(10,'Taal en cultuur'),(11,'Recht');
+INSERT INTO `opleidingssectoren` VALUES (1,'Techniek'),(2,'Economie'),(3,'Natuur'),(4,'Onderwijs'),(5,'Energietransitie'),(6,'Sectoroverstijgend'),(7,'Landbouwkunde'),(8,'Maatschappijleer'),(9,'Gezondheidszorg'),(10,'Taal en cultuur'),(11,'Recht');
 /*!40000 ALTER TABLE `opleidingssectoren` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -182,7 +190,9 @@ CREATE TABLE `prognoses_studenten` (
   `schooljaar` varchar(255) DEFAULT NULL,
   `aantal` int DEFAULT NULL,
   `soort_hoger_onderwijs_id` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_soort_honger_onderwijs` (`soort_hoger_onderwijs_id`),
+  CONSTRAINT `fk_soort_honger_onderwijs` FOREIGN KEY (`soort_hoger_onderwijs_id`) REFERENCES `soort_hoger_onderwijs` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -262,7 +272,13 @@ CREATE TABLE `studenten_woonregio` (
   `Soort_hoger_onderwijs_id` int DEFAULT NULL,
   `Opleidingssector_id` int DEFAULT NULL,
   `Aantal` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_soort_honger_onderwijs_studenten` (`Soort_hoger_onderwijs_id`),
+  KEY `fk_opleidingssector` (`Opleidingssector_id`),
+  KEY `fk_regio_gemeente_studenten` (`Regio_id`),
+  CONSTRAINT `fk_opleidingssector` FOREIGN KEY (`Opleidingssector_id`) REFERENCES `opleidingssectoren` (`id`),
+  CONSTRAINT `fk_regio_gemeente_studenten` FOREIGN KEY (`Regio_id`) REFERENCES `gemeente` (`id`),
+  CONSTRAINT `fk_soort_honger_onderwijs_studenten` FOREIGN KEY (`Soort_hoger_onderwijs_id`) REFERENCES `soort_hoger_onderwijs` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1525 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -290,7 +306,12 @@ CREATE TABLE `volwassene_woon_en_werkregio` (
   `Woonregio_id` int DEFAULT NULL,
   `Werkregio_id` int DEFAULT NULL,
   `Werkende_volwassene` int NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_werkregio_corop_volwassene` (`Werkregio_id`),
+  KEY `fk_woonregio_corop_volwassene` (`Woonregio_id`),
+  CONSTRAINT `fk_werkregio_corop_volwassene` FOREIGN KEY (`Werkregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_corop_volwassene` FOREIGN KEY (`Woonregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_gemeente_volwassene` FOREIGN KEY (`Woonregio_id`) REFERENCES `gemeente` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=401 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -313,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-06  1:44:57
+-- Dump completed on 2024-06-07 17:51:02

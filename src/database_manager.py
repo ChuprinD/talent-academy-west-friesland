@@ -1,6 +1,5 @@
 import mysql.connector
 import csv
-import os
 import subprocess
 
 from src.config import DB_config, Path_to_sql_database

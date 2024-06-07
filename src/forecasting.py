@@ -1,6 +1,7 @@
 import pandas as pd
 from src.config import Path_to_clean_data, Path_to_forecast_data, NHN_COROP
 
+
 def calcualte_moving_average(df, forecast_column_name):
     window_size = 3
     number_years_forecast = 5
