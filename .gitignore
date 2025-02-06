@@ -146,6 +146,6 @@ cython_debug/
 
 useful_files/
 
-*.png
+dashboard/*.png
 
 csv/
