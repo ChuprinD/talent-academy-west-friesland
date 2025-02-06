@@ -1,5 +1,5 @@
 import pandas as pd
-from ..config import (Municipalities, Path_to_raw_data, Path_to_clean_data, NHN_COROP, Last_year)
+from ..config import (Path_to_raw_data, Path_to_clean_data, NHN_COROP)
 
 
 def clean_professionals_living_working_region(name_data_file_2018_2020, name_data_file_2021_2022, name_data_file_2018_2022):

@@ -9,9 +9,6 @@ def clean_young_professionals(name_data_file):
     condition = df['Jaar'] > (last_year - 5)
     df = df[condition] 
     
-    #Drop Niveau regio
-    #df = df.drop('Niveau regio', axis=1) 
-    
     #Condition for Regio
     condition = df['Regio'].isin(Municipalities + NHN_COROP)
     df = df[condition] 
@@ -39,18 +36,6 @@ def clean_young_professionals(name_data_file):
     #Drop Aandeel
     df = df.drop('Aandeel', axis=1)
     
-    #Get total number of working in NHN
-    ''' sum_by_year = df.groupby('Jaar').agg({'Aantal jongeren': 'sum', 'Totaal aantal jongeren': 'sum'}).reset_index()
-    
-    total_rows = []
-    
-    for index, row in sum_by_year.iterrows():
-        total_rows.append({'Jaar': row['Jaar'], 'Regio': 'NHN', 'Aantal jongeren': row['Aantal jongeren'],
-                            'Totaal aantal jongeren': row['Totaal aantal jongeren']})
-    
-    total_df = pd.DataFrame(total_rows)
-    df = pd.concat([df, total_df])'''
-    
     #Save file
     df.to_csv(Path_to_clean_data + '/' + name_data_file, index=False)
 
@@ -73,9 +58,6 @@ def clean_young_professionals_living_working_region_2018_2020(name_data_file_201
     last_year = 2020
     condition = df_2018_2020['Jaar'] > (last_year - 3)
     df_2018_2020 = df_2018_2020[condition] 
-
-    #Drop Niveau regio
-    #df_2018_2020 = df_2018_2020.drop('Niveau regio', axis=1)
 
     #Drop Geslacht
     condition = df_2018_2020['Geslacht'] == 'Totaal mannen en vrouwen'

@@ -70,6 +70,7 @@ DB_config = {'host': 'localhost',
 
 Path_to_raw_data = 'Databases/csv/raw_csv'
 Path_to_clean_data = 'Databases/csv/clean_csv'
+Path_to_forecast_data = 'Databases/csv/forecast_csv'
 Path_to_sql_database = 'Databases/sql/dump.sql'
 
 Name_young_professionals_data_file = 'Arbeidsmarktsituatie jongeren (15 tot 27 jaar) (85820NED_01).csv'
@@ -77,45 +78,74 @@ Name_professionals_living_working_region_2018_2020_data_file = 'Banen van werkne
 Name_professionals_living_working_region_2021_2022_data_file = 'Woon_werkafstand_werknemers__leeftijd_26052024_185436.csv'
 Name_young_professionals_living_working_region_2018_2022_data_file = 'Jongeren van werknemers; woon- en werkregio.csv'
 Name_adult_professionals_living_working_region_2018_2022_data_file = 'Volwassene van werknemers; woon- en werkregio.csv'
-Name_students_living_region = 'HBO_WO studenten; naar CROHO onderdeel (BBOROM_00003_01).csv'
+Name_students_living_region_data_file = 'HBO_WO studenten; naar CROHO onderdeel (BBOROM_00003_01).csv'
+Name_students_work_live_region_data_file = 'Woon-werk situatie (SSB_00031NED_02) - uitgaand.csv'
+Name_forecast_young_and_adult_professionals = 'Jongeren en Volwassene professionals'
+Name_forecast_students = 'HBO en WO professionals'
 
 Table_plan_young_professionals = {'name': 'jongeren',
-                                  'columns': {'id': 'INT PRIMARY KEY AUTO_INCREMENT',
-                                              'Jaar': 'INT NOT NULL',
-                                              'Niveau_regio': 'ENUM(\'Gemeente\', \'Corop\') NOT NULL',                                              
-                                              'Regio_id': 'INT',
-                                              'Werkende_jongeren': 'INT NOT NULL',
-                                              'Totaal_jongeren': 'INT NOT NULL'
-                                              }
+                                  'columns': ['id',
+                                              'Jaar',
+                                              'Niveau_regio',
+                                              'Regio_id',
+                                              'Werkende_jongeren',
+                                              'Totaal_jongeren'
+                                              ]
                                   }
 
 Table_plan_young_professionals_work_live_region = {'name': 'jongeren_woon_en_werkregio',
-                                                   'columns': {'id': 'INT AUTO_INCREMENT PRIMARY KEY',
-                                                               'Jaar': 'INT NOT NULL',
-                                                               'Niveau_regio': 'ENUM(\'Gemeente\', \'Corop\') NOT NULL',
-                                                               'Woonregio_id': 'INT',
-                                                               'Werkregio_id': 'INT',
-                                                               'Werkende_jongeren': 'INT NOT NULL'
-                                                               }
+                                                   'columns': ['id',
+                                                               'Jaar',
+                                                               'Niveau_regio',
+                                                               'Woonregio_id',
+                                                               'Werkregio_id',
+                                                               'Werkende_jongeren'
+                                                               ]
                                                    }
 
 Table_plan_adult_professionals_work_live_region = {'name': 'volwassene_woon_en_werkregio',
-                                                   'columns': {'id': 'INT AUTO_INCREMENT PRIMARY KEY',
-                                                               'Jaar': 'INT NOT NULL',
-                                                               'Niveau_regio': 'ENUM(\'Gemeente\', \'Corop\') NOT NULL',
-                                                               'Woonregio_id': 'INT',
-                                                               'Werkregio_id': 'INT',
-                                                               'Werkende_volwassene': 'INT NOT NULL'
-                                                               }
+                                                   'columns': ['id',
+                                                               'Jaar',
+                                                               'Niveau_regio',
+                                                               'Woonregio_id',
+                                                               'Werkregio_id',
+                                                               'Werkende_volwassene'
+                                                               ]
                                                    }
 
-Table_plan_students_region = {'name': 'studenten_woonregio',
-                              'columns': {'id': 'int auto_increment primary key',
-                                          'Schooljaar': 'varchar(255)',
-                                          'Niveau_regio': 'ENUM(\'Gemeente\', \'Corop\') NOT NULL',
-                                          'Regio_id': 'int',
-                                          'Soort_hoger_onderwijs_id': 'int',
-                                          'Opleidingssector_id': 'int',
-                                          'Aantal': 'int'
-                                          }
-                              }                                       
+Table_plan_students_live_region = {'name': 'studenten_woonregio',
+                                   'columns': ['id',
+                                               'Schooljaar',
+                                               'Niveau_regio',
+                                               'Regio_id',
+                                               'Soort_hoger_onderwijs_id',
+                                               'Opleidingssector_id',
+                                               'Aantal'
+                                               ]
+                                   }  
+
+Table_plan_students_work_live_region = {'name': 'studenten_woon_en_werkregio',
+                                        'columns': ['id',
+                                                    'Diplomajaar',
+                                                    'Werkregio',
+                                                    'peilmoment',
+                                                    'Aantal'
+                                                    ]
+                                        } 
+
+Table_plan_forecast_professionals = {'name': 'prognoses_professionals',
+                                     'columns': ['id',
+                                                 'Jaar',
+                                                 'Banen',
+                                                 'Werk_in_NHN',
+                                                 'Leeftijd'
+                                                 ]
+                                     }
+
+Table_plan_forecast_students = {'name': 'prognoses_studenten',
+                                'columns': ['id',
+                                            'Schooljaar',
+                                            'Aantal',
+                                            'Soort_hoger_onderwijs_id'
+                                            ]
+                                }
