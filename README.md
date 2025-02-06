@@ -16,3 +16,6 @@ This is how you set up the code to run it from source.
 install requirements with `python3 -m pip install -r requirements.txt`
 
 start program with `python3 main.py`
+
+
+
