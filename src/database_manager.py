@@ -1,6 +1,5 @@
 import mysql.connector
 import csv
-import os
 import subprocess
 
 from src.config import DB_config, Path_to_sql_database
@@ -50,13 +49,12 @@ def update_table(csv_path, table_plan, region_columns=[], education_type_columns
             csv_reader = csv.reader(csvfile)
             header = next(csv_reader)  # Skip the CSV file header
 
-            columns = list(table_plan['columns'].keys())
+            columns = table_plan['columns']
             # Remove 'id' column for auto-increment
             columns.remove('id')
 
             # Construct the INSERT SQL query dynamically
             insert_sql = f"INSERT INTO {table_plan['name']} ({', '.join(columns)}) VALUES ({', '.join(['%s'] * len(columns))})"
-             
             # Load data from the CSV file into the table
             for row in csv_reader:
                 row_data = []

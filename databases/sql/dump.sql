@@ -77,7 +77,10 @@ CREATE TABLE `jongeren` (
   `Regio_id` int DEFAULT NULL,
   `werkende_jongeren` int NOT NULL,
   `totaal_jongeren` int NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_regio_gemeente` (`Regio_id`),
+  CONSTRAINT `fk_regio_corop` FOREIGN KEY (`Regio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_regio_gemeente` FOREIGN KEY (`Regio_id`) REFERENCES `gemeente` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -105,7 +108,12 @@ CREATE TABLE `jongeren_woon_en_werkregio` (
   `Woonregio_id` int DEFAULT NULL,
   `Werkregio_id` int DEFAULT NULL,
   `Werkende_jongeren` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_woonregio_corop` (`Woonregio_id`),
+  KEY `fk_werkregio_corop` (`Werkregio_id`),
+  CONSTRAINT `fk_werkregio_corop` FOREIGN KEY (`Werkregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_corop` FOREIGN KEY (`Woonregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_gemeente` FOREIGN KEY (`Woonregio_id`) REFERENCES `gemeente` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=401 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -139,8 +147,63 @@ CREATE TABLE `opleidingssectoren` (
 
 LOCK TABLES `opleidingssectoren` WRITE;
 /*!40000 ALTER TABLE `opleidingssectoren` DISABLE KEYS */;
-INSERT INTO `opleidingssectoren` VALUES (1,'Techniek'),(2,'Economie'),(3,'Natuur'),(4,'Onderwijs'),(5,'Totaal energietransitie'),(6,'Sectoroverstijgend'),(7,'Landbouw en natuurlijke omgeving'),(8,'Gedrag en maatschappij'),(9,'Gezondheidszorg'),(10,'Taal en cultuur'),(11,'Recht');
+INSERT INTO `opleidingssectoren` VALUES (1,'Techniek'),(2,'Economie'),(3,'Natuur'),(4,'Onderwijs'),(5,'Energietransitie'),(6,'Sectoroverstijgend'),(7,'Landbouwkunde'),(8,'Maatschappijleer'),(9,'Gezondheidszorg'),(10,'Taal en cultuur'),(11,'Recht');
 /*!40000 ALTER TABLE `opleidingssectoren` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `prognoses_professionals`
+--
+
+DROP TABLE IF EXISTS `prognoses_professionals`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `prognoses_professionals` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `jaar` int DEFAULT NULL,
+  `banen` int DEFAULT NULL,
+  `werk_in_NHN` enum('Ja','Geen') DEFAULT NULL,
+  `leeftijd` enum('Jonge','Volwassen') DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prognoses_professionals`
+--
+
+LOCK TABLES `prognoses_professionals` WRITE;
+/*!40000 ALTER TABLE `prognoses_professionals` DISABLE KEYS */;
+INSERT INTO `prognoses_professionals` VALUES (1,2018,61500,'Ja','Jonge'),(2,2019,61000,'Ja','Jonge'),(3,2020,59100,'Ja','Jonge'),(4,2021,65000,'Ja','Jonge'),(5,2022,66600,'Ja','Jonge'),(6,2023,63566,'Ja','Jonge'),(7,2024,65055,'Ja','Jonge'),(8,2025,65073,'Ja','Jonge'),(9,2026,64564,'Ja','Jonge'),(10,2027,64897,'Ja','Jonge'),(11,2018,19300,'Geen','Jonge'),(12,2019,21000,'Geen','Jonge'),(13,2020,20600,'Geen','Jonge'),(14,2021,19000,'Geen','Jonge'),(15,2022,20400,'Geen','Jonge'),(16,2023,20000,'Geen','Jonge'),(17,2024,19800,'Geen','Jonge'),(18,2025,20066,'Geen','Jonge'),(19,2026,19955,'Geen','Jonge'),(20,2027,19940,'Geen','Jonge'),(21,2018,143000,'Ja','Volwassen'),(22,2019,142800,'Ja','Volwassen'),(23,2020,142700,'Ja','Volwassen'),(24,2021,149800,'Ja','Volwassen'),(25,2022,151200,'Ja','Volwassen'),(26,2023,147900,'Ja','Volwassen'),(27,2024,149633,'Ja','Volwassen'),(28,2025,149577,'Ja','Volwassen'),(29,2026,149036,'Ja','Volwassen'),(30,2027,149415,'Ja','Volwassen'),(31,2018,61000,'Geen','Volwassen'),(32,2019,64400,'Geen','Volwassen'),(33,2020,63200,'Geen','Volwassen'),(34,2021,62800,'Geen','Volwassen'),(35,2022,65800,'Geen','Volwassen'),(36,2023,63933,'Geen','Volwassen'),(37,2024,64177,'Geen','Volwassen'),(38,2025,64636,'Geen','Volwassen'),(39,2026,64248,'Geen','Volwassen'),(40,2027,64353,'Geen','Volwassen');
+/*!40000 ALTER TABLE `prognoses_professionals` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `prognoses_studenten`
+--
+
+DROP TABLE IF EXISTS `prognoses_studenten`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `prognoses_studenten` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `schooljaar` varchar(255) DEFAULT NULL,
+  `aantal` int DEFAULT NULL,
+  `soort_hoger_onderwijs_id` int DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `fk_soort_honger_onderwijs` (`soort_hoger_onderwijs_id`),
+  CONSTRAINT `fk_soort_honger_onderwijs` FOREIGN KEY (`soort_hoger_onderwijs_id`) REFERENCES `soort_hoger_onderwijs` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `prognoses_studenten`
+--
+
+LOCK TABLES `prognoses_studenten` WRITE;
+/*!40000 ALTER TABLE `prognoses_studenten` DISABLE KEYS */;
+INSERT INTO `prognoses_studenten` VALUES (1,'2018/2019',14231,2),(2,'2019/2020',14578,2),(3,'2020/2021',15819,2),(4,'2021/2022',15990,2),(5,'2022/2023',15383,2),(6,'2023/2024',15730,2),(7,'2024/2025',15701,2),(8,'2025/2026',15604,2),(9,'2026/2027',15678,2),(10,'2027/2028',15661,2),(11,'2018/2019',4571,1),(12,'2019/2020',4907,1),(13,'2020/2021',5423,1),(14,'2021/2022',5560,1),(15,'2022/2023',5478,1),(16,'2023/2024',5487,1),(17,'2024/2025',5508,1),(18,'2025/2026',5491,1),(19,'2026/2027',5495,1),(20,'2027/2028',5498,1);
+/*!40000 ALTER TABLE `prognoses_studenten` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -168,6 +231,33 @@ INSERT INTO `soort_hoger_onderwijs` VALUES (1,'WO'),(2,'HBO');
 UNLOCK TABLES;
 
 --
+-- Table structure for table `studenten_woon_en_werkregio`
+--
+
+DROP TABLE IF EXISTS `studenten_woon_en_werkregio`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `studenten_woon_en_werkregio` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `Diplomajaar` int DEFAULT NULL,
+  `Werkregio` varchar(255) DEFAULT NULL,
+  `Peilmoment` varchar(255) DEFAULT NULL,
+  `Aantal` int DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `studenten_woon_en_werkregio`
+--
+
+LOCK TABLES `studenten_woon_en_werkregio` WRITE;
+/*!40000 ALTER TABLE `studenten_woon_en_werkregio` DISABLE KEYS */;
+INSERT INTO `studenten_woon_en_werkregio` VALUES (1,2013,'Binnen de regio','1 jaar na afstuderen',2720),(2,2013,'Binnen de regio','3 jaar na afstuderen',2680),(3,2013,'Binnen de regio','5 jaar na afstuderen',2590),(4,2013,'Buiten de regio','1 jaar na afstuderen',1400),(5,2013,'Buiten de regio','3 jaar na afstuderen',1705),(6,2013,'Buiten de regio','5 jaar na afstuderen',1780),(7,2014,'Binnen de regio','1 jaar na afstuderen',2835),(8,2014,'Binnen de regio','3 jaar na afstuderen',2820),(9,2014,'Binnen de regio','5 jaar na afstuderen',2790),(10,2014,'Buiten de regio','1 jaar na afstuderen',1480),(11,2014,'Buiten de regio','3 jaar na afstuderen',1760),(12,2014,'Buiten de regio','5 jaar na afstuderen',1805),(13,2015,'Binnen de regio','1 jaar na afstuderen',2600),(14,2015,'Binnen de regio','3 jaar na afstuderen',2620),(15,2015,'Binnen de regio','5 jaar na afstuderen',2575),(16,2015,'Buiten de regio','1 jaar na afstuderen',1375),(17,2015,'Buiten de regio','3 jaar na afstuderen',1615),(18,2015,'Buiten de regio','5 jaar na afstuderen',1655),(19,2016,'Binnen de regio','1 jaar na afstuderen',2880),(20,2016,'Binnen de regio','3 jaar na afstuderen',2835),(21,2016,'Binnen de regio','5 jaar na afstuderen',2815),(22,2016,'Buiten de regio','1 jaar na afstuderen',1440),(23,2016,'Buiten de regio','3 jaar na afstuderen',1690),(24,2016,'Buiten de regio','5 jaar na afstuderen',1700),(25,2017,'Binnen de regio','1 jaar na afstuderen',2850),(26,2017,'Binnen de regio','3 jaar na afstuderen',2795),(27,2017,'Buiten de regio','1 jaar na afstuderen',1430),(28,2017,'Buiten de regio','3 jaar na afstuderen',1665),(29,2018,'Binnen de regio','1 jaar na afstuderen',3015),(30,2018,'Binnen de regio','3 jaar na afstuderen',3055),(31,2018,'Buiten de regio','1 jaar na afstuderen',1575),(32,2018,'Buiten de regio','3 jaar na afstuderen',1690),(33,2019,'Binnen de regio','1 jaar na afstuderen',3040),(34,2019,'Buiten de regio','1 jaar na afstuderen',1400),(35,2020,'Binnen de regio','1 jaar na afstuderen',3385),(36,2020,'Buiten de regio','1 jaar na afstuderen',1535);
+/*!40000 ALTER TABLE `studenten_woon_en_werkregio` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `studenten_woonregio`
 --
 
@@ -182,7 +272,13 @@ CREATE TABLE `studenten_woonregio` (
   `Soort_hoger_onderwijs_id` int DEFAULT NULL,
   `Opleidingssector_id` int DEFAULT NULL,
   `Aantal` int DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_soort_honger_onderwijs_studenten` (`Soort_hoger_onderwijs_id`),
+  KEY `fk_opleidingssector` (`Opleidingssector_id`),
+  KEY `fk_regio_gemeente_studenten` (`Regio_id`),
+  CONSTRAINT `fk_opleidingssector` FOREIGN KEY (`Opleidingssector_id`) REFERENCES `opleidingssectoren` (`id`),
+  CONSTRAINT `fk_regio_gemeente_studenten` FOREIGN KEY (`Regio_id`) REFERENCES `gemeente` (`id`),
+  CONSTRAINT `fk_soort_honger_onderwijs_studenten` FOREIGN KEY (`Soort_hoger_onderwijs_id`) REFERENCES `soort_hoger_onderwijs` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1525 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -210,7 +306,12 @@ CREATE TABLE `volwassene_woon_en_werkregio` (
   `Woonregio_id` int DEFAULT NULL,
   `Werkregio_id` int DEFAULT NULL,
   `Werkende_volwassene` int NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`),
+  KEY `fk_werkregio_corop_volwassene` (`Werkregio_id`),
+  KEY `fk_woonregio_corop_volwassene` (`Woonregio_id`),
+  CONSTRAINT `fk_werkregio_corop_volwassene` FOREIGN KEY (`Werkregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_corop_volwassene` FOREIGN KEY (`Woonregio_id`) REFERENCES `corop` (`id`),
+  CONSTRAINT `fk_woonregio_gemeente_volwassene` FOREIGN KEY (`Woonregio_id`) REFERENCES `gemeente` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=401 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -233,4 +334,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-06-04 12:25:48
+-- Dump completed on 2024-06-07 17:51:02
